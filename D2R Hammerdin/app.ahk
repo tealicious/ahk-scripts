@@ -10,5 +10,6 @@ SendMode Input ; improves reliability
     #Include base.ahk
     #Include hd-auto-auras.ahk
     #Include hd-cta-swap.ahk
-    #Include hd-click-tele.ahk
+    #Include hd-click-charge.ahk
+    ; #Include hd-click-tele.ahk
     #Include merc-heal-mouse-wheel.ahk
