@@ -8,7 +8,3 @@ RButton up::
     Click up right
     Send %redemption%
 return
-
-R::
-    Send %cleansing%
-return

@@ -17,3 +17,7 @@ W::
         Click up left
     }
 return
+
+; R::
+;     Send %cleansing%
+; return
