@@ -1,4 +1,4 @@
-concentration = {F1}
+fanaticism = {F1}
 itemTeleport = {F2}
 redemption = {F3}
 vigor = {F4}

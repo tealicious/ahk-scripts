@@ -4,7 +4,7 @@ return
 
 ; concentration when casting hammers standing still
 ~Space::
-    Send %concentration%
+    Send %fanaticism%
 return
 
 ; redemption when not casting hammers

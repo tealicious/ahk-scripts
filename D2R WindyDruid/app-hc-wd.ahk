@@ -1,5 +1,5 @@
 secondsTilHurricane = 16 ; just plain old seconds
-townPortal = {F9} ; what key is town portal assigned to
+townPortal = {E} ; what key is town portal assigned to
 
 ; ============================================================================
 ; INITIALIZATION
@@ -7,7 +7,6 @@ townPortal = {F9} ; what key is town portal assigned to
 
 #NoEnv ; improves performance
 SendMode Input ; improves reliability
-Thread, interrupt, 0 ; Make all threads always-interruptible.
 #IfWinActive, Diablo II: Resurrected ; suspend outside of client
 
     ; ============================================================================
@@ -16,7 +15,7 @@ Thread, interrupt, 0 ; Make all threads always-interruptible.
 
     secondsTilHurricane := secondsTilHurricane * 1000
 
-    F8::
+    F1::
         alt := !alt
         If (alt)
         {
@@ -25,12 +24,36 @@ Thread, interrupt, 0 ; Make all threads always-interruptible.
         }
         Else
         {
-            SetTimer, castHurricane, Off
+            Reload
         }
     return
 
     castHurricane(){
-        Send {F8}
+        continueWalk = 0
+        if (GetKeyState("RButton", "P"))
+        {
+            continueWalk = 1
+        }
+        BlockKeyboard("On")
+        Send {F1}
+        BlockKeyboard("Off")
+        If (continueWalk = 1)
+        {
+            Click down right
+        }
+    return
+}
+
+BlockKeyboard(state){
+    Loop, 512
+    {
+        Key := Format("SC{:X}",A_Index)
+        If (state = "On")
+            Hotkey, *%Key%, KeyboardKey, On UseErrorLevel
+        else
+            Hotkey, *%Key%, KeyboardKey, Off UseErrorLevel
+    }
+    KeyboardKey:
     return
 }
 
@@ -38,18 +61,13 @@ Thread, interrupt, 0 ; Make all threads always-interruptible.
 ; auto-exit
 ; ============================================================================
 
-promptUser() {
-    MsgBox AutoHotkey script has been suspended, press Delete or Enter to resume script.
-    Suspend, on
-}
-
-~Esc::
+5::
     Suspend, off
+    Send {Esc}
     Send {Down}
     Send {Down}
     Send {Up}
     Send {Enter}
-    promptUser()
 return
 
 ; ============================================================================
@@ -57,13 +75,13 @@ return
 ; ============================================================================
 
 ; town portal
-R::
+E::
     x := (A_ScreenWidth // 2) - 50
     y := (A_ScreenHeight // 2) - 125
     Send %townPortal%
     CoordMode, Mouse, Screen
     MouseMove, x, y
-    Sleep 1200
+    Sleep 1500
     Click left
 return
 
@@ -73,8 +91,13 @@ Enter::
     Send {Enter}
 return
 
+F12::
+    Suspend, Off
+return
+
 Del::
-    Suspend, Toggle
+    Reload
+    Suspend, On
 return
 
 ; ============================================================================
