@@ -4,6 +4,7 @@ SendMode Input
 
     vigorRunBonus = 46
     armorRunBonus = 25
+    skullders = false
 
     concentration = {F1}
     itemTeleport = {F2}
@@ -43,7 +44,7 @@ SendMode Input
         Reload
     return
 
-    ~Esc::
+    Ins::
         restart()
         Sleep, 3250
         startGame()
@@ -58,6 +59,8 @@ SendMode Input
     return
 
     restart() {
+        Send {Esc}
+        Sleep, 10
         Send {Down}
         Send {Down}
         Send {Up}
@@ -127,7 +130,8 @@ SendMode Input
         hammers(8000)
 
         Send {~}
-        Sleep, 10
+        Sleep, 100
+        Send {G}
     }
 
     moveAlongSteps(right, top, sleepTime) {
