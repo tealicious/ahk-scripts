@@ -2,6 +2,9 @@
 SendMode Input
 #IfWinActive, Diablo II: Resurrected
 
+    vigorRunBonus = 46
+    armorRunBonus = 25
+
     concentration = {F1}
     itemTeleport = {F2}
     redemption = {F3}
@@ -18,71 +21,126 @@ SendMode Input
     weaponSwapDelay := 150 ; in milliseconds
     teleportDelay := 500 ; in milliseconds
 
+    ; concentration when casting hammers standing still
+    ~Space::
+        Send %concentration%
+    return
+
+    ; redemption when not casting hammers
+    ~Space up::
+        Send %redemption%
+    return
+
+    ~LButton::
+        Send %vigor%
+    return
+
     CoordMode, Mouse, Screen
 
     Del::
+        Send {Shift Up}
+        Send {F12 Up}
         Reload
     return
 
-    M::
-        runTravincal()
-    return 
+    ~Esc::
+        restart()
+        Sleep, 3000
+        startGame()
+        runKurast(vigorRunBonus, armorRunBonus)
+        runTravincal(vigorRunBonus, armorRunBonus)
+    return
+
+    Enter::
+        startGame()
+        runKurast(vigorRunBonus, armorRunBonus)
+        runTravincal(vigorRunBonus, armorRunBonus)
+    return
+
+    restart() {
+        Send {Down}
+        Send {Down}
+        Send {Up}
+        Send {Enter}
+    }
 
     startGame() {
+        Send {F12 up}
+        Sleep, 100
         MouseMove, (A_ScreenWidth // 2) - 100, (A_ScreenHeight - 100)
         Click, Left
         Sleep, 100
         MouseMove, (A_ScreenWidth // 2) , (A_ScreenHeight // 2) + 50
         Click, Left
-        Sleep, 3000
+        Sleep, 4000
     }
 
-    runTravincal() {
+    runKurast(vigorAdjust, armorAdjust) {
         global vigor
         Send {G}
-        Sleep, 666
+        Sleep, 1000
         castHolyShield()
-        Sleep, 333
+        Sleep, 500
         Send %vigor%
 
-        moveToCouncilSteps(46, 0)
-        selfPot()
-        hammers(10000)
-        moveUpRight(300, 300)
-        selfPot()
-        hammers(10000)
-        moveUpRight(450, 250)
-        moveUpRight(-240, 650)
-        selfPot()
-        hammers(10000)
-        Send {G}
-        Sleep, 300
+        MouseMove, (A_ScreenWidth - 325) , (A_ScreenHeight // 2) + 100
+        Sleep, 100
+        Send {F12}
+        vigorAdjustedSleep(1400, vigorAdjust, armorAdjust)
+
+        MouseMove, (A_ScreenWidth - 325) , 200
+        Send {F12 down}
+        vigorAdjustedSleep(4250, vigorAdjust, armorAdjust)
+
+        MouseMove, (A_ScreenWidth - 300) , (A_ScreenHeight // 2) 
+        vigorAdjustedSleep(5000, vigorAdjust, armorAdjust)
+
+        Send {F12 up}
+
+        Sleep, 100
+        MouseMove, (A_ScreenWidth //2) - 250 , (A_ScreenHeight // 2) - 25
+        Sleep, 100
+        Click left
+        Sleep, 500
+        MouseMove, (A_ScreenWidth //2) - 520 , (A_ScreenHeight - 375)
+        Click left
+        Sleep, 1500
+    }
+
+    runTravincal(vigorAdjust, armorAdjust) {
+
+        moveToCouncilSteps(vigorAdjust, armorAdjust)
+
+        selfPot_1()
+        hammers(8000)
+
+        moveAlongSteps(300, 300, 1300)
+        selfPot_2()
+        hammers(8000)
+
+        moveAlongSteps(450, 250, 1800)
+        moveAlongSteps(-240, 650, 900)
+        selfPot_3()
+        hammers(8000)
+
+        Sleep, 650
+        moveAlongSteps(-100, (A_ScreenHeight // 2) + 50, 400)
+        selfPot_4()
+        hammers(8000)
+
         Send {~}
         Sleep, 10
         Reload
-
     }
 
-    moveUpRight(right, top) {
+    moveAlongSteps(right, top, sleepTime) {
         send {R}
-        Sleep, 100
         MouseMove, (A_ScreenWidth // 2) + right , top
-        Send {F12}
-        Sleep, 2000
-        Send {F12 up}
-        send {R}
-        Sleep, 100
-    }
-
-    moveLeft() {
-        send {R}
-        Sleep, 100
-        MouseMove, 500, 375
+        Sleep, 50
         Send {F12 down}
-        Sleep, 10
+        Sleep, sleepTime
         Send {F12 up}
         send {R}
-        Sleep, 1500
     }
 
     moveToCouncilSteps(vigorAdjust, armorAdjust) {
@@ -108,43 +166,10 @@ SendMode Input
         Sleep, 100
     }
 
-    moveToCouncilInterior(vigorAdjust, armorAdjust) {
-        MouseMove, (A_ScreenWidth - 470) , (A_ScreenHeight - 180)
-        Send {F12 down}
-
-        vigorAdjustedSleep(1200, vigorAdjust, armorAdjust)
-        MouseMove, (A_ScreenWidth - 300) , 200
-
-        vigorAdjustedSleep(1595, vigorAdjust, armorAdjust)
-        MouseMove, (A_ScreenWidth - 300) ,500
-
-        vigorAdjustedSleep(2175, vigorAdjust, armorAdjust)
-        MouseMove, (A_ScreenWidth - 300) ,580
-
-        vigorAdjustedSleep(1500, vigorAdjust, armorAdjust)
-        MouseMove, (A_ScreenWidth - 270) ,900
-
-        vigorAdjustedSleep(3400, vigorAdjust, armorAdjust)
-        MouseMove, (A_ScreenWidth - 280) ,50
-
-        vigorAdjustedSleep(3400, vigorAdjust, armorAdjust)
-        Send {F12 up}
-
-        Sleep, 100
-    }
-
     vigorAdjustedSleep(Sleeptime, vigorAdjust, armorAdjust) {
         effectiveRuneSpeed = ((6 + 4 * ((vigorAdjust / 100) + (armorAdjust * 150 / (armorAdjust + 150) / 100))) / 6)
         ;MsgBox % Sleeptime / ((6 + 4 * ((vigorAdjust / 100) + (armorAdjust * 150 / (armorAdjust + 150) / 100))) / 6)
         Sleep, Sleeptime / ((6 + 4 * ((vigorAdjust / 100) + (armorAdjust * 150 / (armorAdjust + 150) / 100))) / 6)
-    }
-
-    chargeAndReset() {
-        global charge, concentration
-        Send %charge%
-        Click right
-        Sleep, 1000
-        Send %concentration%
     }
 
     castHolyShield() {
@@ -156,7 +181,9 @@ SendMode Input
 
     hammers(timeToCast) {
         global concentration, redemption
-        ;MouseMove, (A_ScreenWidth // 2) , (A_ScreenHeight // 2)
+        MouseMove, 50 , 50
+        Sleep, 10
+        MouseMove, 5 , 5
         send %concentration%
         send {Shift Down}
         Click down left
@@ -164,25 +191,21 @@ SendMode Input
         Click up left
         send {Shift Up}
         send %redemption%
-        Sleep, 300
+        Sleep, 500
     }
 
-    mercPot() {
-        send {Shift Down}
-        send 4
-        send {Shift Up}
-        Sleep, 10
-    }
-
-    selfPot() {
+    selfPot_1() {
         send 1
-        Sleep, 10
     }
 
-    ~RButton::
-        Send %charge%
-    return
+    selfPot_2() {
+        send 2
+    }
 
-    ~RButton up::
-        Send %vigor%
-    return
+    selfPot_3() {
+        send 3
+    }
+
+    selfPot_4() {
+        send 4
+    }
