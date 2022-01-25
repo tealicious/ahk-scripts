@@ -45,7 +45,7 @@ SendMode Input
 
     ~Esc::
         restart()
-        Sleep, 3000
+        Sleep, 3250
         startGame()
         runKurast(vigorRunBonus, armorRunBonus)
         runTravincal(vigorRunBonus, armorRunBonus)
@@ -66,21 +66,21 @@ SendMode Input
 
     startGame() {
         Send {F12 up}
-        Sleep, 100
+        Sleep, 200
         MouseMove, (A_ScreenWidth // 2) - 100, (A_ScreenHeight - 100)
         Click, Left
-        Sleep, 100
+        Sleep, 200
         MouseMove, (A_ScreenWidth // 2) , (A_ScreenHeight // 2) + 50
         Click, Left
-        Sleep, 4000
+        Sleep, 4500
     }
 
     runKurast(vigorAdjust, armorAdjust) {
         global vigor
         Send {G}
-        Sleep, 1000
+        Sleep, 1250
         castHolyShield()
-        Sleep, 500
+        Sleep, 750
         Send %vigor%
 
         MouseMove, (A_ScreenWidth - 325) , (A_ScreenHeight // 2) + 100
@@ -93,7 +93,7 @@ SendMode Input
         vigorAdjustedSleep(4250, vigorAdjust, armorAdjust)
 
         MouseMove, (A_ScreenWidth - 300) , (A_ScreenHeight // 2) 
-        vigorAdjustedSleep(5000, vigorAdjust, armorAdjust)
+        vigorAdjustedSleep(6000, vigorAdjust, armorAdjust)
 
         Send {F12 up}
 
@@ -111,29 +111,28 @@ SendMode Input
 
         moveToCouncilSteps(vigorAdjust, armorAdjust)
 
-        selfPot_1()
         hammers(8000)
 
         moveAlongSteps(300, 300, 1300)
-        selfPot_2()
+        selfPot()
         hammers(8000)
 
         moveAlongSteps(450, 250, 1800)
-        moveAlongSteps(-240, 650, 900)
-        selfPot_3()
+        moveAlongSteps(-240, 650, 1400)
         hammers(8000)
 
-        Sleep, 650
-        moveAlongSteps(-100, (A_ScreenHeight // 2) + 50, 400)
-        selfPot_4()
+        ;moveAlongSteps(-500, (A_ScreenHeight // 2) - 200, 1200)
+        moveAlongSteps((A_ScreenWidth // 2 * -1), 0, 2000)
+        selfPot()
         hammers(8000)
 
         Send {~}
         Sleep, 10
-        Reload
     }
 
     moveAlongSteps(right, top, sleepTime) {
+        global redemption
+        send %redemption%
         send {R}
         MouseMove, (A_ScreenWidth // 2) + right , top
         Sleep, 50
@@ -194,18 +193,22 @@ SendMode Input
         Sleep, 500
     }
 
-    selfPot_1() {
-        send 1
-    }
+    potCol = 0
 
-    selfPot_2() {
-        send 2
-    }
-
-    selfPot_3() {
-        send 3
-    }
-
-    selfPot_4() {
-        send 4
+    selfPot() {
+        global potCol
+        potCol += 1
+        if (potCol == 1) {
+            send 1
+        }
+        if (potCol == 2) {
+            send 2
+        }
+        if (potCol == 3) {
+            send 3
+        }
+        if (potCol >= 4) {
+            send 4
+            potCol = 0
+        }
     }
