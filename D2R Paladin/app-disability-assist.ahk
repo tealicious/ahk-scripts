@@ -2,9 +2,23 @@
 SendMode Input
 #IfWinActive, Diablo II: Resurrected
 
-    vigorRunBonus = 46
-    armorRunBonus = 25
-    skullders = false
+    armorRunBonus := 20
+    vigorRunBonus := 46
+    skullders := true
+    ctaSwap := true
+
+    ; =============================================
+    ; Load Screen Times in Milliseconds (1000 = 1s)
+    ; =============================================
+    gameLoadTime := 3000
+    characterLoadScreenTime := 3250
+    wayPointLoadTime := 1500
+
+    if (skullders == true) {
+        armorRunBonus -= 5
+    } else {
+        armorRunBonus += 5
+    }
 
     concentration = {F1}
     itemTeleport = {F2}
@@ -16,11 +30,23 @@ SendMode Input
     townPortal = {F8}
     battleCommand = {F9}
     battleOrders = {F10}
-    prayer = {F11}
+    hammers = {F11}
     forceMove = {F12}
+    defaultWeaponSwap = {Y}
     buffDelay := 500 ; in milliseconds
     weaponSwapDelay := 150 ; in milliseconds
     teleportDelay := 500 ; in milliseconds
+
+    ;charge with right click
+    ~RButton::
+        Send {F11 down}
+        Send {Shift Down}
+    return
+
+    ~RButton up::
+        Send {F11 up}
+        Send {Shift up}
+    return
 
     ; concentration when casting hammers standing still
     ~Space::
@@ -44,19 +70,37 @@ SendMode Input
         Reload
     return
 
-    Ins::
-        restart()
-        Sleep, 3250
-        startGame()
-        runKurast(vigorRunBonus, armorRunBonus)
+    L::
+        reInitRun()
+    return
+
+    M::
         runTravincal(vigorRunBonus, armorRunBonus)
     return
 
+    XButton1::
+        reInitRun()
+    return
+
     Enter::
+        initRun()
+    return
+
+    initRun() {
+        global vigorRunBonus, armorRunBonus
         startGame()
         runKurast(vigorRunBonus, armorRunBonus)
         runTravincal(vigorRunBonus, armorRunBonus)
-    return
+    }
+
+    reInitRun() {
+        global vigorRunBonus, armorRunBonus, characterLoadScreenTime
+        restart()
+        Sleep, characterLoadScreenTime
+        startGame()
+        runKurast(vigorRunBonus, armorRunBonus)
+        runTravincal(vigorRunBonus, armorRunBonus)
+    }
 
     restart() {
         Send {Esc}
@@ -68,6 +112,7 @@ SendMode Input
     }
 
     startGame() {
+        global gameLoadTime
         Send {F12 up}
         Sleep, 200
         MouseMove, (A_ScreenWidth // 2) - 100, (A_ScreenHeight - 100)
@@ -75,15 +120,11 @@ SendMode Input
         Sleep, 200
         MouseMove, (A_ScreenWidth // 2) , (A_ScreenHeight // 2) + 50
         Click, Left
-        Sleep, 4500
+        Sleep, gameLoadTime
     }
 
     runKurast(vigorAdjust, armorAdjust) {
-        global vigor
-        Send {G}
-        Sleep, 1250
-        castHolyShield()
-        Sleep, 750
+        global vigor, wayPointLoadTime
         Send %vigor%
 
         MouseMove, (A_ScreenWidth - 325) , (A_ScreenHeight // 2) + 100
@@ -96,10 +137,10 @@ SendMode Input
         vigorAdjustedSleep(4250, vigorAdjust, armorAdjust)
 
         MouseMove, (A_ScreenWidth - 300) , (A_ScreenHeight // 2) 
+        Send {G}
         vigorAdjustedSleep(6000, vigorAdjust, armorAdjust)
 
         Send {F12 up}
-
         Sleep, 100
         MouseMove, (A_ScreenWidth //2) - 250 , (A_ScreenHeight // 2) - 25
         Sleep, 100
@@ -107,29 +148,31 @@ SendMode Input
         Sleep, 500
         MouseMove, (A_ScreenWidth //2) - 520 , (A_ScreenHeight - 375)
         Click left
-        Sleep, 1500
+        Sleep, wayPointLoadTime
     }
 
     runTravincal(vigorAdjust, armorAdjust) {
-
+        castHolyShield()
         moveToCouncilSteps(vigorAdjust, armorAdjust)
 
-        hammers(8000)
+        ;hammers(8000)
 
         moveAlongSteps(300, 300, 1300)
         selfPot()
-        hammers(8000)
+        hammers(10000)
 
         moveAlongSteps(450, 250, 1800)
         moveAlongSteps(-240, 650, 1400)
-        hammers(8000)
+        hammers(10000)
 
         ;moveAlongSteps(-500, (A_ScreenHeight // 2) - 200, 1200)
         moveAlongSteps((A_ScreenWidth // 2 * -1), 0, 2000)
         selfPot()
-        hammers(8000)
+        hammers(10000)
 
-        Send {~}
+        moveAlongSteps((A_ScreenWidth // 4), (A_ScreenHeight * .75), 500)
+
+        Send {M}
         Sleep, 100
         Send {G}
     }
@@ -176,9 +219,36 @@ SendMode Input
     }
 
     castHolyShield() {
-        global holyShield, buffDelay
+        global holyShield, buffDelay, ctaSwap, vigor
+        if (ctaSwap == true) {
+            castBattleOrders()
+        }
         Send %holyShield%
         Click right
+        Sleep, %buffDelay%
+        Send %vigor%
+        Sleep, %buffDelay%
+    }
+
+    castBattleOrders() {
+        global defaultWeaponSwap, weaponSwapDelay, battleCommand, battleOrders, buffDelay
+        Send %defaultWeaponSwap%
+        Sleep, %weaponSwapDelay%
+
+        Send %battleCommand%
+        Click right
+        Sleep, %buffDelay%
+        Click right
+        Sleep, %buffDelay%
+
+        Send %battleOrders%
+        Click right
+        Sleep, %buffDelay%
+        Click right
+        Sleep, %buffDelay%
+
+        Send %defaultWeaponSwap%
+        Sleep, %weaponSwapDelay%
         Sleep, %buffDelay%
     }
 
