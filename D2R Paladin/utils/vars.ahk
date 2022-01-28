@@ -27,5 +27,5 @@ BlockKeyboard(state){
 }
 
 buffDelay := 500 ; in milliseconds
-weaponSwapDelay := 150 ; in milliseconds
+weaponSwapDelay := 333 ; in milliseconds
 teleportDelay := 500 ; in milliseconds

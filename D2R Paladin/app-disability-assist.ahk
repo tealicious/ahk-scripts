@@ -34,18 +34,16 @@ SendMode Input
     forceMove = {F12}
     defaultWeaponSwap = {Y}
     buffDelay := 500 ; in milliseconds
-    weaponSwapDelay := 150 ; in milliseconds
+    weaponSwapDelay := 333 ; in milliseconds
     teleportDelay := 500 ; in milliseconds
 
     ;charge with right click
     ~RButton::
-        Send {F11 down}
-        Send {Shift Down}
+        Send %charge%
     return
 
     ~RButton up::
-        Send {F11 up}
-        Send {Shift up}
+        Send %redemption%
     return
 
     ; concentration when casting hammers standing still
@@ -70,16 +68,26 @@ SendMode Input
         Reload
     return
 
-    L::
+    Ins::
         reInitRun()
     return
 
-    M::
-        runTravincal(vigorRunBonus, armorRunBonus)
+    ; M::
+    ;     runTravincal(vigorRunBonus, armorRunBonus)
+    ; return
+
+    ~XButton1 & RButton::
+        reInitRun()
     return
 
     XButton1::
-        reInitRun()
+        send {Shift down}
+        Send %concentration%
+    return
+
+    XButton1 up::
+        send {Shift up}
+        Send %redemption%
     return
 
     Enter::
