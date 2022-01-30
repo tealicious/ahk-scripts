@@ -6,6 +6,7 @@ W::
         continueWalk = 1
     }
     BlockKeyboard("On")
+    Send {Numpad2}
     Send %defaultWeaponSwap%
     Sleep, %weaponSwapDelay%
 
@@ -20,12 +21,14 @@ W::
     Sleep, %buffDelay%
     Click right
     Sleep, %buffDelay% 
+
     Send %holyShield%
     Click right
     Sleep, %buffDelay%
 
     Send %defaultWeaponSwap%
-    Send %redemption%
+    Sleep, %weaponSwapDelay%
+    ; Send %redemption%
     BlockKeyboard("Off")
     If (continueWalk = 1)
     {

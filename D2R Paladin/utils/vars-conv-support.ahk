@@ -1,6 +1,6 @@
-concentration = {F1}
+conviction = {F1}
 itemTeleport = {F2}
-redemption = {F3}
+holyShock = {F3}
 vigor = {F4}
 holyShield = {F5}
 charge = {F6}
@@ -8,9 +8,7 @@ cleansing = {F7}
 townPortal = {F8}
 battleCommand = {F9}
 battleOrders = {F10}
-blessedHammer = {F11}
-conviction = {F12}
-
+prayer = {F11}
 defaultWeaponSwap = {Y}
 
 hotkeyDelay := 1 ; in milliseconds

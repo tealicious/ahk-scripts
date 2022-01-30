@@ -1,5 +1,9 @@
 ~LButton::
-    Send %vigor%
+    if (!auraToggle) {
+        Send %conviction%
+    } else {
+        Send %vigor%
+    }
     Send %blessedHammer%
 return
 
@@ -15,4 +19,8 @@ return
 
 XButton2::
     Send %cleansing%
+return
+
+XButton1::
+    auraToggle := !auraToggle
 return

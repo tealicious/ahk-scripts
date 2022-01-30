@@ -6,6 +6,7 @@ W::
         continueWalk = 1
     }
     BlockKeyboard("On")
+    Send {Numpad2}
     Send %defaultWeaponSwap%
     Sleep, %weaponSwapDelay%
 

@@ -1,8 +1,12 @@
 ;charge with right click
-~RButton::
+~LButton & RButton::
     Send %charge%
+    Send {Shift down}
+    Send %vigor%
 return
 
-~RButton up::
+~LButton & RButton up::
+    Send {Shift up}
+    Send %blessedHammer%
     Send %redemption%
 return
