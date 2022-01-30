@@ -1,5 +1,8 @@
+; =============================================
+; Key Bindings
+; =============================================
 concentration = {F1}
-itemTeleport = {F2}
+itemTeleport = {F2} ; teleport ability from staffs / amus / enigma
 redemption = {F3}
 vigor = {F4}
 holyShield = {F5}
@@ -10,11 +13,20 @@ battleCommand = {F9}
 battleOrders = {F10}
 blessedHammer = {F11}
 conviction = {F12}
+defaultWeaponSwap = {Y} ;move weapon swap off W so we can use that key for self-buffing
 
-defaultWeaponSwap = {Y}
+; =============================================
+; Cooldowns and Timeouts
+; =============================================
 
+buffDelay := 500 ; in milliseconds
+weaponSwapDelay := 333 ; in milliseconds
+teleportDelay := 500 ; in milliseconds
 hotkeyDelay := 1 ; in milliseconds
 
+; =============================================
+; Used for more complex actions
+; =============================================
 BlockKeyboard(state){
     Loop, 512
     {
@@ -27,7 +39,3 @@ BlockKeyboard(state){
     KeyboardKey:
     return
 }
-
-buffDelay := 500 ; in milliseconds
-weaponSwapDelay := 333 ; in milliseconds
-teleportDelay := 500 ; in milliseconds

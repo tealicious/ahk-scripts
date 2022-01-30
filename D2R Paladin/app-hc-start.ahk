@@ -8,7 +8,14 @@ SendMode Input ; improves reliability
 
     #Include utils/vars-conv-support.ahk
     #Include utils/base.ahk
-    #Include utils/hd-holyshield-simple.ahk
+
+    ; =============================================
+    ; Player equipment configuration
+    ; =============================================
+    callToArmsEquipped := false
+    holyShieldOnSwapHand := false
+    #Include utils/hd-cast-buffs.ahk
+
     #Include utils/merc-heal-mouse-wheel.ahk
     #Include hardcore/exit-game.ahk
 

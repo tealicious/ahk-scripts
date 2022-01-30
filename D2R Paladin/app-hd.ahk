@@ -10,6 +10,13 @@ SendMode Input ; improves reliability
     #Include utils/base.ahk
     #Include utils/hd-auto-auras.ahk
     #Include utils/hd-cta-swap.ahk
+
+    ; =============================================
+    ; Player equipment configuration
+    ; =============================================
+    callToArmsEquipped := true
+    holyShieldOnSwapHand := false
+    #Include utils/hd-cast-buffs.ahk
+
     #Include utils/hd-click-charge.ahk
-    ; #Include hd-click-tele.ahk
     #Include utils/merc-heal-mouse-wheel.ahk
