@@ -18,24 +18,7 @@ defaultWeaponSwap = {Y} ;move weapon swap off W so we can use that key for self-
 ; =============================================
 ; Cooldowns and Timeouts
 ; =============================================
-
 buffDelay := 500 ; in milliseconds
 weaponSwapDelay := 333 ; in milliseconds
 teleportDelay := 500 ; in milliseconds
 hotkeyDelay := 1 ; in milliseconds
-
-; =============================================
-; Used for more complex actions
-; =============================================
-BlockKeyboard(state){
-    Loop, 512
-    {
-        Key := Format("SC{:X}",A_Index)
-        If (state = "On")
-            Hotkey, *%Key%, KeyboardKey, On UseErrorLevel
-        else
-            Hotkey, *%Key%, KeyboardKey, Off UseErrorLevel
-    }
-    KeyboardKey:
-    return
-}

@@ -1,3 +1,19 @@
+; =============================================
+; Used for more complex actions in other scripts
+; =============================================
+BlockKeyboard(state){
+    Loop, 512
+    {
+        Key := Format("SC{:X}",A_Index)
+        If (state = "On")
+            Hotkey, *%Key%, KeyboardKey, On UseErrorLevel
+        else
+            Hotkey, *%Key%, KeyboardKey, Off UseErrorLevel
+    }
+    KeyboardKey:
+    return
+}
+
 ; town portal
 ~E::
     Send %townPortal%
@@ -17,6 +33,7 @@ Enter::
     Send {Enter}
 return
 
+; Suspend script toggle
 Del::
     Suspend, Toggle
 return
