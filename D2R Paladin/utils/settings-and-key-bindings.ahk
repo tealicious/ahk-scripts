@@ -13,7 +13,7 @@ battleOrders = {F10}
 conviction = {F12}
 
 ; =============================================
-; Right Click Key Bindings
+; Left Click Key Bindings
 ; =============================================
 charge = {F6} ; place this on the left click action slot
 blessedHammer = {F11} ; place this on the left click action slot
