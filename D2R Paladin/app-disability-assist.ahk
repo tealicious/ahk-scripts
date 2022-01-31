@@ -2,6 +2,9 @@
 SendMode Input
 #IfWinActive, Diablo II: Resurrected
 
+    ; =============================================
+    ; Character Configuration
+    ; =============================================
     armorRunBonus := 20
     vigorRunBonus := 46
     skullders := true
@@ -14,20 +17,14 @@ SendMode Input
     characterLoadScreenTime := 3250
     wayPointLoadTime := 1500
 
-    if (skullders == true) {
-        armorRunBonus -= 5
-    } else {
-        armorRunBonus += 5
-    }
-
+    ; =============================================
+    ; Key Assignments
+    ; =============================================
     concentration = {F1}
-    itemTeleport = {F2}
     redemption = {F3}
     vigor = {F4}
     holyShield = {F5}
     charge = {F6}
-    cleansing = {F7}
-    townPortal = {F8}
     battleCommand = {F9}
     battleOrders = {F10}
     hammers = {F11}
@@ -36,6 +33,15 @@ SendMode Input
     buffDelay := 500 ; in milliseconds
     weaponSwapDelay := 333 ; in milliseconds
     teleportDelay := 500 ; in milliseconds
+
+    ; =============================================
+    ; Code you don't need to fuck with
+    ; =============================================
+    if (skullders == true) {
+        armorRunBonus -= 5
+    } else {
+        armorRunBonus += 5
+    }
 
     ;charge with right click
     ~RButton::

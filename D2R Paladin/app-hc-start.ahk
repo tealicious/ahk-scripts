@@ -1,64 +1,58 @@
-; ============================================================================
-; INITIALIZATION
-; ============================================================================
+#Include utils/init.ahk
 
-#NoEnv ; improves performance
-SendMode Input ; improves reliability
-#IfWinActive, Diablo II: Resurrected ; suspend outside of client
+; =============================================
+; Player equipment configuration
+; =============================================
+callToArmsEquipped := true
+holyShieldOnSwapHand := true
 
-    ; =============================================
-    ; Player equipment configuration
-    ; =============================================
-    callToArmsEquipped := true
-    holyShieldOnSwapHand := true
+#Include utils/vars-conv-support.ahk
+#Include utils/base.ahk
+#Include utils/hd-cast-buffs.ahk
+#Include utils/merc-heal-mouse-wheel.ahk
+#Include hardcore/exit-game.ahk
 
-    #Include utils/vars-conv-support.ahk
-    #Include utils/base.ahk
-    #Include utils/hd-cast-buffs.ahk
-    #Include utils/merc-heal-mouse-wheel.ahk
-    #Include hardcore/exit-game.ahk
+auraToggle := !auraToggle
 
-    auraToggle := !auraToggle
-
-    ~LButton::
-        if (!auraToggle) {
-            Send %conviction%
-        } else {
-            Send %holyShock%
-        }
-    return
-
-    ; holy shock while space is pressed
-    ~Space::
+~LButton::
+    if (!auraToggle) {
+        Send %conviction%
+    } else {
         Send %holyShock%
-    return
+    }
+return
 
-    ; conviction when running
-    ~Space up::
-        if (!auraToggle) {
-            Send %conviction%
-        } else {
-            Send %holyShock%
-        }
-    return
+; holy shock while space is pressed
+~Space::
+    Send %holyShock%
+return
 
-    XButton2::
-        Send %cleansing%
-    return
+; conviction when running
+~Space up::
+    if (!auraToggle) {
+        Send %conviction%
+    } else {
+        Send %holyShock%
+    }
+return
 
-    XButton1::
-        auraToggle := !auraToggle
-    return
+XButton2::
+    Send %cleansing%
+return
 
-    ;charge with right click
-    ~RButton::
-        Send %charge%
-    return
+XButton1::
+    auraToggle := !auraToggle
+return
 
-    ~RButton up::
-        if (!auraToggle) {
-            Send %conviction%
-        } else {
-            Send %holyShock%
-        }
-    return
+;charge with right click
+~RButton::
+    Send %charge%
+return
+
+~RButton up::
+    if (!auraToggle) {
+        Send %conviction%
+    } else {
+        Send %holyShock%
+    }
+return
