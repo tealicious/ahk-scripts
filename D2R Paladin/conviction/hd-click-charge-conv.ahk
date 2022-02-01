@@ -12,9 +12,9 @@ return
 ~LButton & RButton up::
     Send {Shift up}
     Send %blessedHammer%
-    if (!auraToggle) {
-        Send %conviction%
-    } else {
-        Send %redemption%
-    }
+    ; if (!auraToggle) {
+    ;     Send %conviction%
+    ; } else {
+    ;     Send %vigor%
+    ; }
 return

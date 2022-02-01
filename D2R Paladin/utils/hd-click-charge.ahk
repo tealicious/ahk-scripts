@@ -8,5 +8,5 @@ return
 ~LButton & RButton up::
     Send {Shift up}
     Send %blessedHammer%
-    Send %redemption%
+    ; Send %vigor%
 return

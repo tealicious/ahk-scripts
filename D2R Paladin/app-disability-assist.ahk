@@ -1,6 +1,9 @@
 #NoEnv
 SendMode Input
 #IfWinActive, Diablo II: Resurrected
+    ; =========================================================
+    ; NOTICE: TOGGLE OFF QUICK CAST SKILLS IN GAMEPLAY SETTINGS
+    ; =========================================================
 
     ; =============================================
     ; Character Configuration
@@ -30,6 +33,7 @@ SendMode Input
     hammers = {F11}
     forceMove = {F12}
     defaultWeaponSwap = {Y}
+    showLoot = {M}
     buffDelay := 500 ; in milliseconds
     weaponSwapDelay := 333 ; in milliseconds
     teleportDelay := 500 ; in milliseconds
@@ -77,10 +81,6 @@ SendMode Input
     Ins::
         reInitRun()
     return
-
-    ; M::
-    ;     runTravincal(vigorRunBonus, armorRunBonus)
-    ; return
 
     ~XButton1 & RButton::
         reInitRun()
@@ -169,8 +169,6 @@ SendMode Input
         castHolyShield()
         moveToCouncilSteps(vigorAdjust, armorAdjust)
 
-        ;hammers(8000)
-
         moveAlongSteps(300, 300, 1300)
         selfPot()
         hammers(10000)
@@ -179,14 +177,13 @@ SendMode Input
         moveAlongSteps(-240, 650, 1400)
         hammers(10000)
 
-        ;moveAlongSteps(-500, (A_ScreenHeight // 2) - 200, 1200)
         moveAlongSteps((A_ScreenWidth // 2 * -1), 0, 2000)
         selfPot()
         hammers(10000)
 
         moveAlongSteps((A_ScreenWidth // 4), (A_ScreenHeight * .75), 500)
 
-        Send {M}
+        Send %showLoot%
         Sleep, 100
         Send {G}
     }

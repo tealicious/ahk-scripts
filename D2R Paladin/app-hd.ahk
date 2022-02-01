@@ -5,6 +5,7 @@
 ; =============================================
 callToArmsEquipped := true
 holyShieldOnSwapHand := false
+hardcoreCharacter := false
 
 #Include utils/settings-and-key-bindings.ahk
 #Include utils/base.ahk
@@ -12,3 +13,6 @@ holyShieldOnSwapHand := false
 #Include utils/hd-cast-buffs.ahk
 #Include utils/hd-click-charge.ahk
 #Include utils/merc-heal-mouse-wheel.ahk
+if (hardcoreCharacter) {
+    #Include hardcore/exit-game.ahk
+}
