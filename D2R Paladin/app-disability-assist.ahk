@@ -20,7 +20,7 @@ global gameLoadTime := 3000
 global characterLoadScreenTime := 3250
 global wayPointLoadTime := 1500
 
-#Include vars.ahk
+#Include _vars.ahk
 #Include utils/base.ahk
 #Include utils/hd-auto-auras.ahk
 #Include utils/hd-cast-buffs.ahk

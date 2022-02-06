@@ -7,7 +7,8 @@ global callToArmsEquipped := true
 global holyShieldOnSwapHand := true
 global hardcoreCharacter := true
 
-#Include vars.ahk
+#Include _vars.ahk
+#Include utils/quick-start.ahk
 #Include utils/base.ahk
 #Include utils/hd-auto-auras.ahk
 #Include utils/hd-aura-toggles.ahk

@@ -7,7 +7,7 @@ callToArmsEquipped := false
 hardcoreCharacter := false
 auraToggle := !auraToggle
 
-#Include vars.ahk
+#Include _vars.ahk
 #Include utils/base.ahk
 #Include utils/frozen-armor.ahk
 #Include utils/click-run.ahk

@@ -22,14 +22,19 @@ global battleOrders = "{F12}" ; if you've bought a CTA
 ; Move Weapon Swap to Y
 ; ================================================================
 global defaultWeaponSwap = "{Y}" ; move weapon swap off W so we can use that key for self-buffing
+
+; ================================================================
+; Travy bot stuff
+; ================================================================
 global forceMove = "{M}"
 global forceMoveStart = "{M down}"
 global forceMoveEnd = "{M up}"
 global showLoot = "{L}"
 
-; ================================================================
-; Cooldowns and Timeouts and other shit you dont need to fuck with
-; ================================================================
+; ===================================================================================
+; Cooldowns and Timeouts and other shit you dont need to fuck with (unless you do :P)
+; ===================================================================================
+global characterLoadScreenTime := 3250
 global buffDelay := 500 ; in milliseconds
 global weaponSwapDelay := 333 ; in milliseconds
 global teleportDelay := 500 ; in milliseconds
