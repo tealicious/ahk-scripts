@@ -8,6 +8,7 @@ global holyShieldOnSwapHand := true
 global hardcoreCharacter := true
 
 #Include _vars.ahk
+
 #Include utils/quick-start.ahk
 #Include utils/base.ahk
 #Include utils/hd-auto-auras.ahk
