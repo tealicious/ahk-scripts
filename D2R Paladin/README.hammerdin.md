@@ -20,7 +20,7 @@
 - ```F1``` Holy Hammers
 - ```F2``` Charge
 
-![Left Click](hammerdin-left-click-skillbar.JPG)
+![Left Click Skillbar](hammerdin-left-click-skillbar.JPG)
 
 ### Right Click
 - ```F3``` Concentration
@@ -34,5 +34,5 @@
 - ```F11``` Battle Command
 - ```F12``` Battle Orders
 
--![Right Click](hammerdin-right-click-skillbar.JPG)
+![Right Click Skillbar](hammerdin-right-click-skillbar.JPG)
 
