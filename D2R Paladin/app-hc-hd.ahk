@@ -3,16 +3,15 @@
 ; =============================================
 ; Player equipment configuration
 ; =============================================
-callToArmsEquipped := true
-holyShieldOnSwapHand := true
-hardcoreCharacter := true
+global callToArmsEquipped := true
+global holyShieldOnSwapHand := true
+global hardcoreCharacter := true
 
-#Include utils/settings-and-key-bindings.ahk
+#Include vars.ahk
 #Include utils/base.ahk
 #Include utils/hd-auto-auras.ahk
+#Include utils/hd-aura-toggles.ahk
 #Include utils/hd-cast-buffs.ahk
 #Include utils/hd-click-charge.ahk
 #Include utils/merc-heal-mouse-wheel.ahk
-if (hardcoreCharacter) {
-    #Include hardcore/exit-game.ahk
-}
+#Include hardcore/exit-game.ahk

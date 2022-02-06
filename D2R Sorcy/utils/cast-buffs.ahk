@@ -1,33 +1,34 @@
 W::
-    castPalyBuffs()
+    castBuffs()
 return
 
-castPalyBuffs() {
+castBuffs() {
+    global holyShieldOnSwapHand, callToArmsEquipped, defaultWeaponSwap, weaponSwapDelay
     BlockKeyboard("On")
     if (callToArmsEquipped) {
 
         Send {Numpad2}
         if (holyShieldOnSwapHand) { 
             toggleWeapon()
-            castBattleOrdersWithHolyShield()
+            castBattleOrders()
+            ;buff line here
             toggleWeapon()
 
         } else {
             toggleWeapon()
             castBattleOrders()
             toggleWeapon()
-
-            castHolyShield()
+            ;buff line here
         }
 
     } else {
 
         if (holyShieldOnSwapHand) {
             toggleWeapon()
-            castHolyShield()
+            ;buff line here
             toggleWeapon()
         } else {
-            castHolyShield()
+            ;buff line here
         }
 
     }
@@ -35,22 +36,13 @@ castPalyBuffs() {
 }
 
 toggleWeapon() {
+    global defaultWeaponSwap, weaponSwapDelay
     Send %defaultWeaponSwap%
     Sleep, %weaponSwapDelay%
 }
 
-castBattleOrdersWithHolyShield() {
-    castBattleOrders()
-    castHolyShield()
-}
-
-castHolyShield() {
-    Send %holyShield%
-    Click right
-    Sleep, %buffDelay%
-}
-
 castBattleOrders() {
+    global battleCommand, battleOrders, buffDelay
     Send %battleCommand%
     Click right
     Sleep, %buffDelay%
@@ -62,4 +54,8 @@ castBattleOrders() {
     Sleep, %buffDelay%
     Click right
     Sleep, %buffDelay% 
+}
+
+castFrozenArmor() {
+
 }

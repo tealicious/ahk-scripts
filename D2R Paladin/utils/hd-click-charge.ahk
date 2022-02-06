@@ -2,11 +2,10 @@
 ~LButton & RButton::
     Send %charge%
     Send {Shift down}
-    Send %vigor%
+    sendDefaultAura()
 return
 
 ~LButton & RButton up::
     Send {Shift up}
     Send %blessedHammer%
-    ; Send %vigor%
 return

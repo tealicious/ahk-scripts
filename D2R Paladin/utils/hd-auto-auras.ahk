@@ -1,5 +1,5 @@
 ~LButton::
-    Send %vigor%
+    sendDefaultAura()
     Send %blessedHammer%
 return
 
@@ -11,8 +11,4 @@ return
 ; redemption when not casting hammers
 ~Space up::
     Send %redemption%
-return
-
-XButton2::
-    Send %cleansing%
 return
