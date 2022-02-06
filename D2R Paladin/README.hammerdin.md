@@ -1,8 +1,8 @@
 ## Hotkey Macros
 - ```Left Click``` Assigned auto-aura
-- ```Left click + Right Click``` Charge
-- ```Thumb click 1``` Toggle through and set Primary or Secondary Aura as Assigned auto-aura
-- ```Thumb click 2``` Toggle through and set Tertiary Aura or Redemption as assigned Auto-aura
+- ```Left Click + Right Click``` Charge
+- ```Thumb Click 1``` Toggle through and set Primary or Secondary Aura as Assigned auto-aura
+- ```Thumb Click 2``` Toggle through and set Tertiary Aura or Redemption as assigned Auto-aura
 - ```Space down``` Concentration (set spacebar as second stand-still action in key-mappings)
 - ```Space up``` Redemption
 - ```E``` - Town Portal
