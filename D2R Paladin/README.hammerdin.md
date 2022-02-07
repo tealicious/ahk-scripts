@@ -1,7 +1,6 @@
 # Hammerdin Macro Guide
 
 ## Setup
-***
 ### Gameplay
 - Toggle off ```Quick Cast Skills```
 ### Controls
@@ -12,8 +11,9 @@
 - Assign second ```Show Items``` command to ```L```
 - Assign second ```Force Move``` command to ```M```
 
-## Gameplay
 ***
+
+## Gameplay
 ### Hotkey Macros
 - ```Left Click``` Assigned auto-aura
 - ```Left Click + Right Click``` Charge
