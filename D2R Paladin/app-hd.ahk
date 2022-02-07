@@ -4,7 +4,7 @@
 ; Player equipment configuration
 ; =============================================
 global callToArmsEquipped := true
-global holyShieldOnSwapHand := true
+global holyShieldOnSwapHand := false
 global hardcoreCharacter := false
 
 #Include _vars.ahk
