@@ -60,6 +60,7 @@ XButton1 up::
 return
 
 BS::
+    Suspend, off
     Send {Shift Up}
     Send %forceMoveEnd%
     Reload
