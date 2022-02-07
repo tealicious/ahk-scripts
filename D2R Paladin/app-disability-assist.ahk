@@ -132,6 +132,7 @@ runKurast(vigorAdjust, armorAdjust) {
 
 runTravincal(vigorAdjust, armorAdjust) {
     castPalyBuffs()
+    Sleep, %buffDelay%
     Send %primaryAura%
     moveToCouncilSteps(vigorAdjust, armorAdjust)
 
