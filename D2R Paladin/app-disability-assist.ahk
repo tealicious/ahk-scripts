@@ -78,7 +78,7 @@ initRun() {
 
 reInitRun() {
     restart()
-    Sleep, characterLoadScreenTime
+    Sleep, %characterLoadScreenTime%
     startGame()
     runKurast(vigorRunBonus, armorRunBonus)
     runTravincal(vigorRunBonus, armorRunBonus)
@@ -101,7 +101,7 @@ startGame() {
     Sleep, 200
     MouseMove, (A_ScreenWidth // 2) , (A_ScreenHeight // 2) + 50
     Click, Left
-    Sleep, gameLoadTime
+    Sleep, %gameLoadTime%
 }
 
 runKurast(vigorAdjust, armorAdjust) {
