@@ -128,7 +128,7 @@ runKurast(vigorAdjust, armorAdjust) {
     Sleep, 500
     MouseMove, (A_ScreenWidth //2) - 520 , (A_ScreenHeight - 375)
     Click left
-    Sleep, wayPointLoadTime
+    Sleep, %wayPointLoadTime%
 }
 
 runTravincal(vigorAdjust, armorAdjust) {
