@@ -1,4 +1,5 @@
 #Include utils/init.ahk
+#Include _vars.ahk
 
 ; =============================================================
 ; NOTICE: TOGGLE OFF QUICK CAST SKILLS IN D2R GAMEPLAY SETTINGS
@@ -17,10 +18,9 @@ global skullders := true
 ; Load Screen Times in Milliseconds (1000 = 1s)
 ; =============================================
 global gameLoadTime := 3000
-global characterLoadScreenTime := 3250
-global wayPointLoadTime := 1500
+global characterLoadScreenTime := 3000
+global wayPointLoadTime := 1000
 
-#Include _vars.ahk
 #Include utils/base.ahk
 #Include utils/hd-auto-auras.ahk
 #Include utils/hd-cast-buffs.ahk
@@ -78,7 +78,7 @@ initRun() {
 
 reInitRun() {
     restart()
-    Sleep, %characterLoadScreenTime%
+    Sleep %characterLoadScreenTime%
     startGame()
     runKurast(vigorRunBonus, armorRunBonus)
     runTravincal(vigorRunBonus, armorRunBonus)
@@ -86,7 +86,7 @@ reInitRun() {
 
 restart() {
     Send {Esc}
-    Sleep, 10
+    Sleep 10
     Send {Down}
     Send {Down}
     Send {Up}
@@ -95,20 +95,20 @@ restart() {
 
 startGame() {
     Send %forceMoveEnd%
-    Sleep, 200
+    Sleep 200
     MouseMove, (A_ScreenWidth // 2) - 100, (A_ScreenHeight - 100)
     Click, Left
-    Sleep, 200
+    Sleep 200
     MouseMove, (A_ScreenWidth // 2) , (A_ScreenHeight // 2) + 50
     Click, Left
-    Sleep, %gameLoadTime%
+    Sleep %gameLoadTime%
 }
 
 runKurast(vigorAdjust, armorAdjust) {
     Send %primaryAura%
 
     MouseMove, (A_ScreenWidth - 325) , (A_ScreenHeight // 2) + 100
-    Sleep, 100
+    Sleep 100
     Send %forceMove%
     vigorAdjustedSleep(1400, vigorAdjust, armorAdjust)
 
@@ -121,19 +121,19 @@ runKurast(vigorAdjust, armorAdjust) {
     vigorAdjustedSleep(6000, vigorAdjust, armorAdjust)
 
     Send %forceMoveEnd%
-    Sleep, 100
+    Sleep 100
     MouseMove, (A_ScreenWidth //2) - 250 , (A_ScreenHeight // 2) - 25
-    Sleep, 100
+    Sleep 100
     Click left
-    Sleep, 500
+    Sleep 500
     MouseMove, (A_ScreenWidth //2) - 520 , (A_ScreenHeight - 375)
     Click left
-    Sleep, %wayPointLoadTime%
+    Sleep %wayPointLoadTime%
 }
 
 runTravincal(vigorAdjust, armorAdjust) {
     castPalyBuffs()
-    Sleep, %buffDelay%
+    Sleep %buffDelay%
     Send %primaryAura%
     moveToCouncilSteps(vigorAdjust, armorAdjust)
 
@@ -152,7 +152,7 @@ runTravincal(vigorAdjust, armorAdjust) {
     moveAlongSteps((A_ScreenWidth // 4), (A_ScreenHeight * .75), 500)
 
     Send %showLoot%
-    Sleep, 100
+    Sleep 100
     Send {G}
 }
 
@@ -160,9 +160,9 @@ moveAlongSteps(right, top, sleepTime) {
     send %redemption%
     send {R}
     MouseMove, (A_ScreenWidth // 2) + right , top
-    Sleep, 50
+    Sleep 50
     Send %forceMoveStart%
-    Sleep, sleepTime
+    Sleep sleepTime
     Send %forceMoveEnd%
     send {R}
 }
@@ -187,27 +187,27 @@ moveToCouncilSteps(vigorAdjust, armorAdjust) {
 
     Send %forceMoveEnd%
 
-    Sleep, 100
+    Sleep 100
 }
 
 vigorAdjustedSleep(Sleeptime, vigorAdjust, armorAdjust) {
     effectiveRuneSpeed = ((6 + 4 * ((vigorAdjust / 100) + (armorAdjust * 150 / (armorAdjust + 150) / 100))) / 6)
     ;MsgBox % Sleeptime / ((6 + 4 * ((vigorAdjust / 100) + (armorAdjust * 150 / (armorAdjust + 150) / 100))) / 6)
-    Sleep, Sleeptime / ((6 + 4 * ((vigorAdjust / 100) + (armorAdjust * 150 / (armorAdjust + 150) / 100))) / 6)
+    Sleep Sleeptime / ((6 + 4 * ((vigorAdjust / 100) + (armorAdjust * 150 / (armorAdjust + 150) / 100))) / 6)
 }
 
 hammers(timeToCast) {
     MouseMove, 50 , 50
-    Sleep, 10
+    Sleep 10
     MouseMove, 5 , 5
     send %concentration%
     send {Shift Down}
     Click down left
-    Sleep, timeToCast
+    Sleep timeToCast
     Click up left
     send {Shift Up}
     send %redemption%
-    Sleep, 500
+    Sleep 500
 }
 
 global potCol = 0
