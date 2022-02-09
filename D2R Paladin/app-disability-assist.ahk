@@ -19,7 +19,7 @@ global skullders := true
 ; =============================================
 global gameLoadTime := 3000
 global characterLoadScreenTime := 3000
-global wayPointLoadTime := 1000
+global wayPointLoadTime := 1500 
 
 #Include utils/base.ahk
 #Include utils/hd-auto-auras.ahk
@@ -106,9 +106,9 @@ startGame() {
 
 runKurast(vigorAdjust, armorAdjust) {
     Send %primaryAura%
-
-    MouseMove, (A_ScreenWidth - 325) , (A_ScreenHeight // 2) + 100
     Sleep 100
+    MouseMove, (A_ScreenWidth - 325) , (A_ScreenHeight // 2) + 100
+    Sleep 500
     Send %forceMove%
     vigorAdjustedSleep(1400, vigorAdjust, armorAdjust)
 
