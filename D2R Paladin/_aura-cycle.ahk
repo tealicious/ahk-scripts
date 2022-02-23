@@ -1,9 +1,9 @@
-WheelUp::Send % KeyCycle("Up")
-WheelDown::Send % KeyCycle("Down")
+~WheelUp::Send % KeyCycle("Up")
+~WheelDown::Send % KeyCycle("Down")
 
 KeyCycle(dir)
 {
-    keys := [primaryAura, secondaryAura, tertiaryAura, redemption]
+    keys := [primaryAura, secondaryAura, tertiaryAura]
     static Time := A_TickCount , Pos := 0
     if (dir = "Up") && (Pos = keys.MaxIndex())
         Pos := 1
