@@ -1,5 +1,7 @@
 ~RButton & LButton::
-    castBoBarbBuffs()
+    if (boBarb) {
+        castBoBarbBuffs()
+    }
 return
 
 castBoBarbBuffs() {

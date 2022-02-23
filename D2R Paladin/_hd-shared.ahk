@@ -1,0 +1,11 @@
+#Include _vars.ahk
+#Include _aura-cycle.ahk
+#Include utils/base.ahk
+#Include utils/quick-start.ahk
+#Include utils/hd-lazy-hammers.ahk
+#Include utils/hd-auto-auras.ahk
+#Include utils/hd-cast-buffs.ahk
+#Include utils/hd-click-charge.ahk
+#Include utils/merc-heal-single-button.ahk
+#Include utils/barb-cast-warcries.ahk
+#Include hardcore/exit-game.ahk

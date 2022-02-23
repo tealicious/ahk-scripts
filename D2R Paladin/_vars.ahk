@@ -39,30 +39,6 @@ global buffDelay := 500 ; in milliseconds
 global weaponSwapDelay := 250 ; in milliseconds
 global teleportDelay := 500 ; in milliseconds
 global hotkeyDelay := 1 ; in milliseconds
-
-global auraToggle := !auraToggle
-global secondaryAuraToggle := !secondaryAuraToggle
-global usePrimaryAuraSet := true
-
-sendDefaultAura() {
-
-    if (usePrimaryAuraSet) {
-
-        if (auraToggle) {
-            Send %primaryAura%
-        } else {
-            Send %secondaryAura%
-        } 
-
-    } else {
-
-        if (secondaryAuraToggle) {
-            Send %tertiaryAura%
-        } else {
-            Send %redemption%
-        } 
-
-    }
-
-}
+global currentAuara := primaryAura
+global potionIdx := 1
 
