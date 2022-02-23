@@ -5,7 +5,7 @@
 ; NOTICE: TOGGLE OFF QUICK CAST SKILLS IN D2R GAMEPLAY SETTINGS
 ; =============================================================
 global callToArmsEquipped := true
-global holyShieldOnSwapHand := true
+global holyShieldOnSwapHand := false
 
 ; =============================================
 ; Character Configuration
@@ -17,10 +17,11 @@ global skullders := true
 ; =============================================
 ; Load Screen Times in Milliseconds (1000 = 1s)
 ; =============================================
-global gameLoadTime := 3000
-global characterLoadScreenTime := 3000
+global gameLoadTime := 4000
+characterLoadScreenTime := 3000
 global wayPointLoadTime := 1500 
 
+#Include _aura-cycle.ahk
 #Include utils/base.ahk
 #Include utils/hd-auto-auras.ahk
 #Include utils/hd-cast-buffs.ahk
