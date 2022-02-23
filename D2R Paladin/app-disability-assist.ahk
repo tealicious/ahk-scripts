@@ -59,7 +59,7 @@ XButton1 up::
     Send %redemption%
 return
 
-BS::
+~BS::
     Suspend, off
     Send {Shift Up}
     Send %forceMoveEnd%

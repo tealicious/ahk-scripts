@@ -36,7 +36,7 @@ global showLoot = "{L}"
 ; ===================================================================================
 global characterLoadScreenTime := 3250
 global buffDelay := 500 ; in milliseconds
-global weaponSwapDelay := 333 ; in milliseconds
+global weaponSwapDelay := 250 ; in milliseconds
 global teleportDelay := 500 ; in milliseconds
 global hotkeyDelay := 1 ; in milliseconds
 
