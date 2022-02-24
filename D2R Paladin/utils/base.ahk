@@ -16,6 +16,7 @@ BlockKeyboard(state){
 
 ; town portal
 ~E::
+    currentAuara := primaryAura
     Send %townPortal%
     Sleep, 100
     Click right

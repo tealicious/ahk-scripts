@@ -11,5 +11,7 @@ healMerc() {
     } else {
         potionIdx += 1
     }
+    Send {Shift Down}
     Send %potionIdx%
+    Send {Shift Up}
 }
