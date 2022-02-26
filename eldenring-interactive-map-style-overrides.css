@@ -1,0 +1,98 @@
+/* For use with the interactive map @ https://eldenring.wiki.fextralife.com/Interactive+Map */
+
+html {
+  overflow: hidden;
+}
+
+#wrapper {
+  padding-left: 0px;
+}
+
+.sidebar-nav {
+  display: none;
+}
+
+nav {
+  display: none;
+}
+
+nav.navbar {
+  display: none;
+}
+
+#form-header {
+  display: none;
+}
+
+#sidebar-wrapper {
+  display: none;
+}
+
+.fex-main {
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.fex-bg-image {
+  padding-top: 0 !important;
+}
+
+.titlearea {
+  display: none;
+}
+
+h1 {
+  display: none;
+}
+
+#page-content-wrapper {
+  margin-top: 0;
+}
+
+#main-content > div > div:not(#sub-main) {
+  display: none;
+}
+
+br {
+  display: none;
+}
+
+#wiki-content-block > *:not(div) {
+  display: none;
+}
+
+.discussion-wrapper {
+  display: none;
+}
+
+.container-fluid {
+  padding: 0;
+}
+
+.glow-corners {
+  display: none;
+}
+
+iframe {
+  border: none;
+  width: 100vw;
+  height: 100vh;
+}
+
+.flex-main > *:not(#wrapper) {
+  display: none !important;
+}
+
+#wrapper > div footer,
+.footer-sticky {
+  display: none;
+}
+
+p {
+  margin: 0 !important;
+}
+
+#sub-main {
+  overflow: hidden;
+}
