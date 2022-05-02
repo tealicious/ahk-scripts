@@ -1,10 +1,13 @@
-#Include utils/init.ahk
-
-global hardcoreCharacter := true
+#NoEnv ; improves performance
+SendMode Input ; improves reliability
+#IfWinActive, Diablo II: Resurrected ; suspend outside of client
 
 zeal = {F1}
 charge = {F2}
-mainAura = {F3} ; holy fire
+mainAura = {F3} ; holy fire/ice/lit
+holyShield = {F4}
+clickRunStart = {Ctrl down}
+clickRunEnd = {Ctrl up}
 
 ~LButton & RButton::
     Send %charge%
@@ -17,8 +20,20 @@ return
     Send %zeal%
 return
 
-~LButton::
+; ~LButton::
+;     Send %mainAura%
+; return
+
+; ~LButton & RButton::
+;     Send %clickRunStart%
+; return
+
+; ~LButton & RButton up::
+;     Send %clickRunEnd%
+; return
+
+W::
+    Send %holyShield%
+    Click right
     Send %mainAura%
 return
-
-#Include hardcore/exit-game.ahk

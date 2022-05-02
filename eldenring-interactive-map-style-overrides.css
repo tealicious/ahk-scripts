@@ -1,4 +1,8 @@
-/* For use with the interactive map @ https://eldenring.wiki.fextralife.com/Interactive+Map */
+/* 
+For use with the interactive map @ https://eldenring.wiki.fextralife.com/Interactive+Map
+Firefox style override extension: https://addons.mozilla.org/en-US/firefox/addon/stylebot-web/
+Chrome style override extension: https://chrome.google.com/webstore/detail/stylebot/oiaejidbmkiecgbjeifoejpgmdaleoha?hl=en-US 
+*/
 
 html {
   overflow: hidden;

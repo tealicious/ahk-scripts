@@ -4,22 +4,24 @@
 ; =============================================================
 ; NOTICE: TOGGLE OFF QUICK CAST SKILLS IN D2R GAMEPLAY SETTINGS
 ; =============================================================
-global callToArmsEquipped := true
-global holyShieldOnSwapHand := false
+global callToArmsEquipped := false
+global holyShieldOnSwapHand := true
 
 ; =============================================
 ; Character Configuration
 ; =============================================
 global armorRunBonus := 20
 global vigorRunBonus := 46
-global skullders := true
+global skullders := false
 
 ; =============================================
 ; Load Screen Times in Milliseconds (1000 = 1s)
 ; =============================================
-global gameLoadTime := 4000
-characterLoadScreenTime := 3000
-global wayPointLoadTime := 1500 
+global gameLoadTime := 10000
+characterLoadScreenTime := 6000
+buffDelay := 720 ; in milliseconds
+weaponSwapDelay := 500 ; in milliseconds
+global wayPointLoadTime := 1750 
 
 #Include _aura-cycle.ahk
 #Include utils/base.ahk
@@ -67,6 +69,12 @@ return
     Reload
 return
 
+MButton::
+    Send {Shift down}
+    Click right
+    Send {Shift up}
+return
+
 Shift & Enter::
     initRun()
 return
@@ -107,7 +115,7 @@ startGame() {
 
 runKurast(vigorAdjust, armorAdjust) {
     Send %primaryAura%
-    Sleep 100
+    Sleep 250
     MouseMove, (A_ScreenWidth - 325) , (A_ScreenHeight // 2) + 100
     Sleep 500
     Send %forceMove%
@@ -122,9 +130,9 @@ runKurast(vigorAdjust, armorAdjust) {
     vigorAdjustedSleep(6000, vigorAdjust, armorAdjust)
 
     Send %forceMoveEnd%
-    Sleep 100
+    Sleep 250
     MouseMove, (A_ScreenWidth //2) - 250 , (A_ScreenHeight // 2) - 25
-    Sleep 100
+    Sleep 250
     Click left
     Sleep 500
     MouseMove, (A_ScreenWidth //2) - 520 , (A_ScreenHeight - 375)
@@ -144,6 +152,7 @@ runTravincal(vigorAdjust, armorAdjust) {
 
     moveAlongSteps(450, 250, 1800)
     moveAlongSteps(-240, 650, 1400)
+    selfPot()
     hammers(10000)
 
     moveAlongSteps((A_ScreenWidth // 2 * -1), 0, 2000)
@@ -153,7 +162,7 @@ runTravincal(vigorAdjust, armorAdjust) {
     moveAlongSteps((A_ScreenWidth // 4), (A_ScreenHeight * .75), 500)
 
     Send %showLoot%
-    Sleep 100
+    Sleep 250
     Send {G}
 }
 
@@ -188,7 +197,7 @@ moveToCouncilSteps(vigorAdjust, armorAdjust) {
 
     Send %forceMoveEnd%
 
-    Sleep 100
+    Sleep 250
 }
 
 vigorAdjustedSleep(Sleeptime, vigorAdjust, armorAdjust) {
