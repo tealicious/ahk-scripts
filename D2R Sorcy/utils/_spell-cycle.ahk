@@ -1,10 +1,9 @@
-~WheelUp::Send % KeyCycle("Up")
+; ~WheelUp::Send % KeyCycle("Up")
 ~WheelDown::Send % KeyCycle("Down")
 
 KeyCycle(dir)
 {
-    ; keys := [primaryAura, secondaryAura, tertiaryAura]
-    keys := [primaryAura, secondaryAura]
+    keys := [spellSecondary, spellTertiary, spellFour, spellFive]
     static Time := A_TickCount , Pos := 0
     if (dir = "Up") && (Pos = keys.MaxIndex())
         Pos := 1
@@ -14,10 +13,10 @@ KeyCycle(dir)
         Pos++
     else
         Pos--
-    currentAuara := keys[Pos]
+    currentSpell := keys[Pos]
     return keys[Pos]
 }
 
-sendDefaultAura() {
-    Send %currentAuara%
+sendDefaultRightClick() {
+    Send %currentSpell%
 }

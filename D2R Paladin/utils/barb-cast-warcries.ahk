@@ -1,4 +1,5 @@
 ~RButton & LButton::
+    Suspend, off
     if (boBarb) {
         castBoBarbBuffs()
     }

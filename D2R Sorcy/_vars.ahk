@@ -1,16 +1,20 @@
 ; =============================================
 ; Left Click Key Bindings
 ; =============================================
-spellPrimary = {F2} ; place this on the left click action slot
+global spellPrimary = "{F2}" ; place this on the left click action slot
 
 ; =============================================
 ; Right Click Key Bindings
 ; =============================================
 teleport = {F1}
-spellSecondary = {F3}
-spellTertiary = {F4}
-townPortal = {F5}
-frozenArmor = {F6}
+global spellSecondary = "{F3}"
+global spellTertiary = "{F4}"
+global spellFour = "{F5}"
+global spellFive = "{F6}"
+townPortal = {F7}
+global frozenArmor = "{F8}"
+telekinesis = {F9}
+global energyShield = "{F10}"
 clickRunStart = {Ctrl down}
 clickRunEnd = {Ctrl up}
 
@@ -26,12 +30,14 @@ buffDelay := 500 ; in milliseconds
 weaponSwapDelay := 333 ; in milliseconds
 teleportDelay := 500 ; in milliseconds
 hotkeyDelay := 1 ; in milliseconds
+global currentSpell = spellSecondary
+global potionIdx := 1
 
-sendDefaultRightClick() {
-    global auraToggle, teleport, spellSecondary
-    if (!auraToggle) {
-        Send %teleport%
-    } else {
-        Send %spellSecondary%
-    }
-}
+; sendDefaultRightClick() {
+;     global auraToggle, teleport, spellSecondary
+;     if (!auraToggle) {
+;         Send %teleport%
+;     } else {
+;         Send %spellSecondary%
+;     }
+; }

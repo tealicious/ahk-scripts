@@ -4,24 +4,24 @@
 ; =============================================================
 ; NOTICE: TOGGLE OFF QUICK CAST SKILLS IN D2R GAMEPLAY SETTINGS
 ; =============================================================
-global callToArmsEquipped := false
-global holyShieldOnSwapHand := true
+global callToArmsEquipped := true
+global holyShieldOnSwapHand := false
 
 ; =============================================
 ; Character Configuration
 ; =============================================
 global armorRunBonus := 20
 global vigorRunBonus := 46
-global skullders := false
+global skullders := true
 
 ; =============================================
 ; Load Screen Times in Milliseconds (1000 = 1s)
 ; =============================================
-global gameLoadTime := 10000
-characterLoadScreenTime := 6000
+global gameLoadTime := 6000
+characterLoadScreenTime := 3000
 buffDelay := 720 ; in milliseconds
 weaponSwapDelay := 500 ; in milliseconds
-global wayPointLoadTime := 1750 
+global wayPointLoadTime := 1500 
 
 #Include _aura-cycle.ahk
 #Include utils/base.ahk
@@ -63,6 +63,13 @@ XButton1 up::
 return
 
 ~BS::
+    Suspend, off
+    Send {Shift Up}
+    Send %forceMoveEnd%
+    Reload
+return
+
+~RButton & LButton::
     Suspend, off
     Send {Shift Up}
     Send %forceMoveEnd%

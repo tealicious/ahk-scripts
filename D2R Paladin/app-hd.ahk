@@ -3,8 +3,9 @@
 ; Player equipment configuration
 ; =============================================
 global mercenaryPotionColumnCount := 3
-global callToArmsEquipped := false
-global holyShieldOnSwapHand := true
+global callToArmsEquipped := true
+global holyShieldOnSwapHand := false
 global boBarb := false
+global enigma := true
 
 #Include _hd-shared.ahk

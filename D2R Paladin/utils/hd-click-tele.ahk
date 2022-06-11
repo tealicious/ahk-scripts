@@ -1,10 +1,14 @@
 ; tele
 RButton::
-    Send %itemTeleport%
-    Click down right
+    if (enigma) { 
+        Send %itemTeleport%
+        Click down right
+    }
 return
 
 RButton up::
-    Click up right
-    Send %redemption%
+    if (enigma) { 
+        Click up right
+        sendDefaultAura()
+    }
 return

@@ -1,4 +1,3 @@
-; concentration when casting hammers standing still
 ~Space::
     Send %teleport%
 return

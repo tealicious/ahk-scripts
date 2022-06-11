@@ -1,9 +1,9 @@
 XButton1::
-    send {Shift down}
+    send {Space down}
     Send %concentration%
 return
 
 XButton1 up::
-    send {Shift up}
+    send {Space up}
     Send %redemption%
 return

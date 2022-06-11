@@ -1,10 +1,8 @@
 global breakLoop = 0
 
 blizzBlast() {
-    send %spellPrimary%
-    sleep 10
     send {Space down}
-    Click, right
+    Click, left
     sleep 50
     Click, down right
     sleep %castingDelay%

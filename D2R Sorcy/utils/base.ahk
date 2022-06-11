@@ -39,7 +39,6 @@ Del::
     Suspend, Toggle
 return
 
-XButton2::
-    auraToggle := !auraToggle
-    sendDefaultRightClick()
+BackSpace::
+    Reload
 return
