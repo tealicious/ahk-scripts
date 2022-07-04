@@ -7,5 +7,6 @@ global callToArmsEquipped := true
 global holyShieldOnSwapHand := false
 global boBarb := false
 global enigma := true
+global telekinesisRing := true
 
 #Include _hd-shared.ahk

@@ -1,5 +1,6 @@
 W::
     castPalyBuffs()
+    sendDefaultAura()
 return
 
 castPalyBuffs() {

@@ -1,15 +1,18 @@
 global breakLoop = 0
 
 blizzBlast() {
-    send %spellPrimary%
-    sleep 10
+    Click, up left
     send {Space down}
+    send %spellPrimary%
+    sleep 100
     Click, right
+    sleep 50
+    Send %currentSpell%
     sleep 50
     Click, down right
     sleep %castingDelay%
     Click, up right
-    Sleep 250
+    sleep 250
 }
 
 resetKeyState() {
@@ -29,7 +32,8 @@ loopBlizzBlast() {
         if (breakLoop = 1) {
             resetKeyState()
             break 
-        } else if (breakLoop = 2) {
+        }
+        else if (breakLoop = 2) {
             resetKeyState()
             keepItMovin()
             break 
@@ -38,13 +42,14 @@ loopBlizzBlast() {
     }
 }
 
-~z::
-    loopBlizzBlast()
-return
+; ~Space::
+;     loopBlizzBlast()
+; return
 
-z up::
-    breakLoop = 1
-return
+; ~Space up::
+;     breakLoop = 1
+; return
+
 
 ~Space & LButton::
     loopBlizzBlast()
@@ -63,5 +68,9 @@ return
 return
 
 ~Space up::
+    breakLoop = 1
+return
+
+~LButton up::
     breakLoop = 1
 return

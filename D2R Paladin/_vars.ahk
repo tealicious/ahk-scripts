@@ -17,6 +17,7 @@ global townPortal = "{F9}"
 global itemTeleport = "{F10}" ; teleport ability from staffs / amus / enigma
 global battleCommand = "{F11}" ; if you've bought a CTA
 global battleOrders = "{F12}" ; if you've bought a CTA
+global telekinesis = "{ins}"
 
 ; ================================================================
 ; Move Weapon Swap to Y

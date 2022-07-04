@@ -1,6 +1,6 @@
 global breakLoop = 0
 
-blizzBlast() {
+orbBlast() {
     send {Space down}
     Click, left
     sleep 50
@@ -20,7 +20,7 @@ keepItMovin() {
     Click, down left
 }
 
-loopBlizzBlast() {
+loopOrbBlast() {
     breakLoop = 0
     Loop, 
     {
@@ -32,24 +32,16 @@ loopBlizzBlast() {
             keepItMovin()
             break 
         }
-        blizzBlast()
+        orbBlast()
     }
 }
 
-~z::
-    loopBlizzBlast()
-return
-
-z up::
-    breakLoop = 1
-return
-
 ~Space & LButton::
-    loopBlizzBlast()
+    loopOrbBlast()
 return
 
 ~LButton & Space::
-    loopBlizzBlast()
+    loopOrbBlast()
 return
 
 ~LButton & Space up::

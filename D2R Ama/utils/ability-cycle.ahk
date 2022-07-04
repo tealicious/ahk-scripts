@@ -1,22 +1,17 @@
 
 ~WheelUp:: 
-    if (telekinesisRing) {
-        Send %telekinesis%
-        Click Right
-        sendDefaultAura()
-        return
-    } else {
-        Send % KeyCycle("Up")
-    }
+    Send % KeyCycle("Up")
 return
 
-
-~WheelDown::Send % KeyCycle("Down")
+~WheelDown::
+    Send % KeyCycle("Down")
+return
 
 KeyCycle(dir)
 {
     ; keys := [primaryAura, secondaryAura, tertiaryAura]
-    keys := [primaryAura, secondaryAura]
+    ; keys := [primaryAbility, secondaryAbility]
+    keys := [primaryAbility]
     static Time := A_TickCount , Pos := 0
     if (dir = "Up") && (Pos = keys.MaxIndex())
         Pos := 1
@@ -26,10 +21,10 @@ KeyCycle(dir)
         Pos++
     else
         Pos--
-    currentAuara := keys[Pos]
-    return keys[Pos]
+    currentAubility := keys[Pos]
+return keys[Pos]
 }
 
-sendDefaultAura() {
-    Send %currentAuara%
+sendDefaultAbility() {
+    Send %currentAbility%
 }

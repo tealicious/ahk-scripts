@@ -24,8 +24,8 @@ BlockKeyboard(state){
     CoordMode, Mouse, Screen
     MouseMove, x, y
     Sleep 1500
-    sendDefaultRightClick()
     Click left
+    sendDefaultAbility()
 return
 
 ; Suspend script (for typing in chat)

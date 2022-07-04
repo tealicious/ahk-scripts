@@ -17,4 +17,5 @@ global castingDelay = 1000
 #Include utils/click-tele.ahk
 #Include utils/merc-heal-single-button.ahk
 #Include utils/telekinesis.ahk
-#Include utils/orb-blast-combo.ahk
+; #Include utils/orb-blast-combo.ahk
+#Include utils/blizz-blast-combo.ahk
